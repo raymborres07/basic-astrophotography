@@ -59,7 +59,7 @@
         <h2 class="section-title">2. Post-Processing Practice</h2>
         <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Drag the sliders to edit this Milky Way shot. Practice balancing Exposure and Vibrance.</p>
         
-        <section class="simulator-card" style="grid-template-columns: 1fr 300px;">
+        <section class="simulator-card practice-card">
             <div class="viewfinder-container" style="background: #111; overflow: hidden; min-height: 400px; display: flex; flex-direction: column;">
                 <img id="practiceImg" src="UtsumiBeach.png" alt="Practice Shot" style="max-width: 100%; height: auto; transition: filter 0.1s ease; border-radius: 8px;">
                 <p class="help-text" style="text-align: center; margin-top: 0.5rem;">Original photo by <strong>Raymond Borres</strong></p>
@@ -133,23 +133,23 @@
             <!-- Capture Section -->
             <div class="card">
                 <h3>3. Capture & Free RAW Apps</h3>
-                <div style="margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Android: The Free Staples</p>
-                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                        <li><strong>DeepSkyCamera:</strong> Built specifically for Astro. RAW/DNG, built-in intervalometer (runs with screen off).</li>
-                        <li><strong>ProCam X - Lite:</strong> Full manual control over ISO, Shutter, and Infinity Focus.</li>
+                <div class="guide-item">
+                    <p class="guide-header">Android: The Free Staples</p>
+                    <ul class="guide-list">
+                        <li><a href="https://play.google.com/store/apps/details?id=de.seeboerger_weichselbaum.deepskycamera" target="_blank">DeepSkyCamera</a>: Built specifically for Astro. RAW/DNG, built-in intervalometer (runs with screen off).</li>
+                        <li><a href="https://play.google.com/store/apps/details?id=com.intermedia.hd.camera.pro" target="_blank">ProCam X - Lite</a>: Full manual control over ISO, Shutter, and Infinity Focus.</li>
                     </ul>
                 </div>
-                <div style="margin-bottom: 1.2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">iPhone: The Ultimate Free Find</p>
-                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                        <li><strong>AstroShader:</strong> Designed exclusively for Astro. Manual controls, 16-bit TIFF, intervalometer, and live-stacking!</li>
-                        <li><strong>Lightroom Mobile:</strong> Built-in Pro camera shoots true RAW. Great for single 15s exposures.</li>
+                <div class="guide-item">
+                    <p class="guide-header">iPhone: The Ultimate Free Find</p>
+                    <ul class="guide-list">
+                        <li><a href="https://apps.apple.com/app/astroshader/id6444855489" target="_blank">AstroShader</a>: Designed exclusively for Astro. Manual controls, 16-bit TIFF, intervalometer, and live-stacking!</li>
+                        <li><a href="https://apps.apple.com/app/adobe-lightroom-photo-editor/id878783582" target="_blank">Lightroom Mobile</a>: Built-in Pro camera shoots true RAW. Great for single 15s exposures.</li>
                     </ul>
                 </div>
-                <div>
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">The 500 Rule Equation</p>
-                    <div class="code-block" style="text-align: center; color: var(--accent); padding: 0.5rem; margin-top: 0.5rem;">
+                <div class="guide-item">
+                    <p class="guide-header">The 500 Rule Equation</p>
+                    <div class="code-block">
                         500 ÷ FL = Max Exposure (s)
                     </div>
                 </div>
@@ -158,34 +158,34 @@
             <!-- Processing Section -->
             <div class="card">
                 <h3>4. Post-Processing Stack</h3>
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Stacking Software (Noise Removal)</p>
-                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                        <li><strong>Sequator (Windows):</strong> The easiest stacking tool for beginners.</li>
-                        <li><strong>DeepSkyStacker (DSS):</strong> The industry standard for deep-sky work.</li>
+                <div class="guide-item">
+                    <p class="guide-header">Stacking Software (Noise Removal)</p>
+                    <ul class="guide-list">
+                        <li><a href="https://siril.org/" target="_blank">Siril (Windows/macOS/Linux)</a>: The most powerful free alternative to PixInsight. Incredible for stacking and color calibration.</li>
+                        <li><a href="https://sites.google.com/site/sequatorglobal/" target="_blank">Sequator (Windows)</a>: The easiest stacking tool for beginners.</li>
+                        <li><a href="http://deepskystacker.free.fr/english/index.html" target="_blank">DeepSkyStacker (DSS)</a>: The industry standard for deep-sky work.</li>
                     </ul>
                 </div>
-                <div>
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Editing & Color Pop</p>
-                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                <div class="guide-item">
+                    <p class="guide-header">Editing & Color Pop</p>
+                    <ul class="guide-list">
                         <li><strong>Kill the Orange:</strong> Drop White Balance to ~3200K to dim city haze.</li>
                         <li><strong>HSL Panel:</strong> Drop Orange Luminance to selectively dim light pollution.</li>
                         <li><strong>Vibrance:</strong> Boost Vibrance (not Saturation) to protect star colors.</li>
-                        <li><strong>Darktable:</strong> Free, professional open-source alternative to Lightroom.</li>
+                        <li><a href="https://www.darktable.org/" target="_blank">Darktable</a>: Free, professional open-source alternative to Lightroom.</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- 10-Minute Challenge & Presentation Tip -->
         <h2 class="section-title">The 10-Minute Challenge</h2>
-        <div class="card" style="margin-bottom: 4rem; border-left: 4px solid var(--accent);">
-            <p style="font-size: 1.1rem; font-style: italic; color: var(--text-primary); margin-bottom: 1rem;">
+        <div class="card challenge-card">
+            <p>
                 "Astrophotography isn't about buying a ₱100,000 camera; it's about hacking the hardware you already have. Before we start the 10-minute challenge, scan this code and download the free tools that unlock your phone's sensor."
             </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="#" style="background: var(--accent); color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Download Android Tools</a>
-                <a href="#" style="background: var(--border); color: var(--text-primary); padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Download iOS Tools</a>
+            <div class="download-links">
+                <a href="https://play.google.com/store/apps/details?id=de.seeboerger_weichselbaum.deepskycamera" target="_blank">Download Android Tools</a>
+                <a href="https://apps.apple.com/app/astroshader/id6444855489" target="_blank">Download iOS Tools</a>
             </div>
         </div>
 

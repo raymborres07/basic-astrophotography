@@ -100,6 +100,16 @@ canvas {
     }
 }
 
+.simulator-card.practice-card {
+    grid-template-columns: 1fr 300px;
+}
+
+@media (max-width: 900px) {
+    .simulator-card.practice-card {
+        grid-template-columns: 1fr !important;
+    }
+}
+
 .control-group {
     display: flex;
     flex-direction: column;
@@ -225,11 +235,101 @@ input[type="range"]::-webkit-slider-thumb:hover {
     background: #000;
     padding: 1rem;
     border-radius: 8px;
-    font-family: monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
-    color: #D1D1D1;
+    color: var(--accent);
     overflow-x: auto;
     border: 1px solid var(--border);
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Guide Items */
+.guide-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.guide-item:last-child {
+    border-bottom: none;
+}
+
+.guide-header {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.guide-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.guide-list li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.4;
+}
+
+.guide-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.guide-list a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 4px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.guide-list a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+/* Challenge Card & Buttons */
+.challenge-card {
+    margin-bottom: 4rem;
+    border-left: 4px solid var(--accent);
+}
+
+.challenge-card p {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.download-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.download-links a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: var(--border);
+    text-underline-offset: 4px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.download-links a:hover {
+    text-decoration-color: var(--accent);
+    opacity: 0.8;
 }
 
 /* Credits & Footer */
