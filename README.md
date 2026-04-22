@@ -26,7 +26,8 @@ Astrophotography on a budget requires "Diskarte" (resourcefulness). This tool he
 
 ## 🙏 Acknowledgments & Credits
 
-- **Trevor Jones (AstroBackyard)** - Provided the practice raw data image and deep-sky processing masterclass inspiration.
+- **Raymond Borres** - Provided the original Utsumi Beach practice photo.
+- **Trevor Jones (AstroBackyard)** - Deep-sky processing masterclass inspiration.
 - **Jerry Lodriguss (Astropix)** - Signal-to-noise ratio and calibration fundamentals.
 - **Jack Nichols** - Single-shot Milky Way processing techniques.
 - **Dr. Roger Clark (Clarkvision)** - Physics of light pollution and natural star color.
