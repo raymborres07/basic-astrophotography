@@ -87,50 +87,88 @@
 
         <h2 class="section-title">The "Diskarte" Masterclass Guide</h2>
         <div class="grid">
-            <!-- Hardware Card -->
+            <!-- Hardware Section -->
             <div class="card">
-                <h3>1. Hardware: Phones vs. Cameras</h3>
-                <div style="margin-bottom: 1rem;">
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Smartphones (Zero-Budget)</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Phone sensors are tiny and fixed-aperture. High ISO generates massive noise. <strong>The Fix:</strong> Shoot in RAW and stack images.</p>
+                <h3>1. Hardware Reality & Selection</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Phones (The Zero-Budget Setup)</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Phone sensors are tiny and fixed-aperture (f/1.7-2.2). <strong>The Fix:</strong> Shoot in RAW and stack multiple images to average out noise.</p>
                 </div>
-                <div>
-                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">DSLRs & Mirrorless (Enthusiast)</p>
-                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Large sensors keep images clean at ISO 3200+. True wide-angle lenses keep stars sharp. <strong>Bottleneck:</strong> Cold weather kills batteries fast.</p>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">DSLRs & Mirrorless (The Enthusiast)</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Large sensors drink in light at ISO 3200-6400. <strong>The Bottleneck:</strong> Cold weather kills batteries; may need external remotes.</p>
+                </div>
+                <div style="padding-top: 1rem; border-top: 1px solid var(--border);">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Hardware Hacks</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Zero-Vibration:</strong> Use wired earphone volume buttons as a remote shutter.</li>
+                        <li><strong>Manual Focus:</strong> Zoom in 10x on a star; adjust until it's the smallest dot possible.</li>
+                        <li><strong>The Dew Hack:</strong> Wrap a chemical hand warmer (kairo) around the lens.</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Planning Card -->
+            <!-- Planning Section -->
             <div class="card">
                 <h3>2. Planning & Weather</h3>
-                <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <li><strong>Clear Outside:</strong> Breaks down Low, Med, High cloud cover.</li>
-                    <li><strong>PAGASA:</strong> Localized rain band cross-referencing for Philippines.</li>
-                    <li><strong>LightPollutionMap:</strong> Find Bortle 4 or lower areas.</li>
-                    <li><strong>Stellarium:</strong> See exactly where the Milky Way will rise.</li>
-                    <li><strong>Moon Phase:</strong> Shoot only when illumination is < 20%.</li>
-                </ul>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">The Golden Rules</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Cloud Cover:</strong> Use <strong>Clear Outside</strong>. Cloud cover is a big NO-NO.</li>
+                        <li><strong>PAGASA:</strong> Cross-reference with localized satellite imagery in PH.</li>
+                        <li><strong>Bortle Scale:</strong> Use LightPollutionMap.info to find Bortle 4 or lower.</li>
+                        <li><strong>Moon Phase:</strong> Shoot when illumination is < 20% or after moonset.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Planning Apps</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Stellarium / Star Walk 2:</strong> Virtual sky to see where the Milky Way rises.</li>
+                        <li><strong>Red Light Rule:</strong> Use red headlamps only to protect night vision.</li>
+                        <li><strong>Camping:</strong> Bring power banks and warm clothes for long sessions.</li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Capture Apps Card -->
+            <!-- Capture Section -->
             <div class="card">
-                <h3>3. Capture Apps (RAW Focus)</h3>
-                <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <li><strong>Lightroom Mobile:</strong> Built-in "Pro" camera shoots true RAW (DNG) for free.</li>
-                    <li><strong>Open Camera (Android):</strong> Completely free/open-source; lock focus to infinity.</li>
-                    <li><strong>Intervalometer (Android):</strong> Auto-clicker for hands-free stacking capture.</li>
-                </ul>
+                <h3>3. Capture & Automation</h3>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">The 500 Rule Equation</p>
+                    <div class="code-block" style="text-align: center; margin-bottom: 0.5rem; color: var(--accent);">
+                        500 ÷ FL = Max Exposure (s)
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary);">*For APS-C sensors (Sony/Canon/Nikon entry), use <strong>300</strong> instead of 500.</p>
+                </div>
+                <div>
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Free RAW Camera Apps</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Lightroom Mobile:</strong> Pro camera shoots true DNG RAW files.</li>
+                        <li><strong>Open Camera:</strong> Free, open-source, and allows manual infinity focus.</li>
+                        <li><strong>Intervalometer (Android):</strong> Auto-clicker for capturing 100+ stacking frames.</li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Post-Processing Card -->
+            <!-- Processing Section -->
             <div class="card">
                 <h3>4. Post-Processing Stack</h3>
-                <ul style="font-size: 0.85rem; color: var(--text-secondary);">
-                    <li><strong>Sequator:</strong> Best free stacking software for beginners (Windows).</li>
-                    <li><strong>DeepSkyStacker:</strong> Complex but mathematical; for pros using mounts.</li>
-                    <li><strong>Lightroom Mobile:</strong> Best for color correction and neutralizing city haze.</li>
-                    <li><strong>Darktable:</strong> Free, open-source alternative to Lightroom for laptops.</li>
-                </ul>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Stacking Software (Noise Removal)</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Sequator (Windows):</strong> The easiest stacking tool for beginners.</li>
+                        <li><strong>DeepSkyStacker (DSS):</strong> The industry standard for deep-sky work.</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: var(--accent); font-size: 0.85rem; font-weight: 600;">Editing & Color Pop</p>
+                    <ul style="font-size: 0.85rem; color: var(--text-secondary);">
+                        <li><strong>Kill the Orange:</strong> Drop White Balance to ~3200K to dim city haze.</li>
+                        <li><strong>HSL Panel:</strong> Drop Orange Luminance to selectively dim light pollution.</li>
+                        <li><strong>Vibrance:</strong> Boost Vibrance (not Saturation) to protect star colors.</li>
+                        <li><strong>Darktable:</strong> Free, professional open-source alternative to Lightroom.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
