@@ -26,9 +26,7 @@ Astrophotography on a budget requires "Diskarte" (resourcefulness). This tool he
 
 ## 🙏 Acknowledgments & Credits
 
-This simulator and the workflows within were inspired by the incredible work of:
-
-- **Trevor Jones (AstroBackyard)** - Deep-sky processing masterclass.
+- **Trevor Jones (AstroBackyard)** - Provided the practice raw data image and deep-sky processing masterclass inspiration.
 - **Jerry Lodriguss (Astropix)** - Signal-to-noise ratio and calibration fundamentals.
 - **Jack Nichols** - Single-shot Milky Way processing techniques.
 - **Dr. Roger Clark (Clarkvision)** - Physics of light pollution and natural star color.

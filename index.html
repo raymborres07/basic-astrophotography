@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diskarte Astro-Simulator | Raymond Borres</title>
-    <meta name="description" content="An interactive astrophotography exposure simulator and post-processing practice tool. Learn the 500 Rule and exposure triangle.">
+    <meta name="description"
+        content="An interactive astrophotography exposure simulator and post-processing practice tool. Learn the 500 Rule and exposure triangle.">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -17,8 +20,9 @@
         </header>
 
         <h2 class="section-title">1. The Exposure Simulator</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Challenge: Find the "Excellent Exposure" status by balancing the sliders. Watch out for Earth's rotation!</p>
-        
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Challenge: Find the "Excellent
+            Exposure" status by balancing the sliders. Watch out for Earth's rotation!</p>
+
         <section class="simulator-card">
             <div class="viewfinder-container">
                 <canvas id="astroCanvas"></canvas>
@@ -26,7 +30,8 @@
             <div class="controls">
                 <div class="control-group">
                     <label class="control-label">Sky Condition <span id="weather-val">Clear</span></label>
-                    <select id="weather" style="background: var(--bg); color: var(--text-primary); border: 1px solid var(--border); padding: 5px; border-radius: 4px;">
+                    <select id="weather"
+                        style="background: var(--bg); color: var(--text-primary); border: 1px solid var(--border); padding: 5px; border-radius: 4px;">
                         <option value="clear">Clear Skies</option>
                         <option value="hazy">Hazy / Light Pollution</option>
                         <option value="cloudy">Partly Cloudy</option>
@@ -50,18 +55,25 @@
                 </div>
 
                 <div class="status-badge">
-                    <div class="control-label">Max Shutter (500 Rule): <span id="limit-val" style="color: var(--text-primary);">41s</span></div>
-                    <div id="status-msg" style="font-weight: 600; margin-top: 0.5rem; color: var(--error);">Underexposed</div>
+                    <div class="control-label">Max Shutter (500 Rule): <span id="limit-val"
+                            style="color: var(--text-primary);">41s</span></div>
+                    <div id="status-msg" style="font-weight: 600; margin-top: 0.5rem; color: var(--error);">Underexposed
+                    </div>
                 </div>
             </div>
         </section>
 
         <h2 class="section-title">2. Post-Processing Practice</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Drag the sliders to edit this Milky Way shot. Practice balancing Exposure and Vibrance.</p>
-        
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Drag the sliders to edit this
+            Milky Way shot. Practice balancing Exposure and Vibrance.</p>
+
         <section class="simulator-card" style="grid-template-columns: 1fr 300px;">
-            <div class="viewfinder-container" style="background: #111; overflow: hidden; min-height: 400px;">
-                <img id="practiceImg" src="practice-shot.jpg" alt="Practice Shot" style="max-width: 100%; height: auto; transition: filter 0.1s ease; border-radius: 8px;">
+            <div class="viewfinder-container"
+                style="background: #111; overflow: hidden; min-height: 400px; display: flex; flex-direction: column;">
+                <img id="practiceImg" src="Utsumi Beach.png" alt="Practice Shot"
+                    style="max-width: 100%; height: auto; transition: filter 0.1s ease; border-radius: 8px;">
+                <p class="help-text" style="text-align: center; margin-top: 0.5rem;">Original raw data by <strong>Trevor
+                        Jones (AstroBackyard)</strong></p>
             </div>
             <div class="controls">
                 <div class="control-group">
@@ -80,7 +92,9 @@
                     <label class="control-label">Vibrance <span id="edit-vib-val">100%</span></label>
                     <input type="range" id="edit-vib" min="0" max="200" value="100">
                 </div>
-                <button id="resetEdit" style="background: var(--border); color: var(--text-primary); border: none; padding: 10px; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600;">Reset Image</button>
+                <button id="resetEdit"
+                    style="background: var(--border); color: var(--text-primary); border: none; padding: 10px; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600;">Reset
+                    Image</button>
             </div>
         </section>
 
@@ -91,14 +105,17 @@
                 <ul>
                     <li><strong>Cloud Cover:</strong> Check Clear Outside or Windy. Cloud cover is a big NO-NO.</li>
                     <li><strong>Moon Phase:</strong> Shoot during New Moon or after moonset for maximum darkness.</li>
-                    <li><strong>Bortle Scale:</strong> Know your location. Bortle 1-3 is the dream; 4-5 is okay with filters.</li>
+                    <li><strong>Bortle Scale:</strong> Know your location. Bortle 1-3 is the dream; 4-5 is okay with
+                        filters.</li>
                 </ul>
             </div>
             <div class="card">
                 <h3>2. Gear & Etiquette</h3>
                 <ul>
-                    <li><strong>Red Light Only:</strong> Use a red headlamp. White light ruins your night vision and "photobombs" long exposures.</li>
-                    <li><strong>Camping Gear:</strong> If you're going far, bring a power bank, warm clothes, and coffee.</li>
+                    <li><strong>Red Light Only:</strong> Use a red headlamp. White light ruins your night vision and
+                        "photobombs" long exposures.</li>
+                    <li><strong>Camping Gear:</strong> If you're going far, bring a power bank, warm clothes, and
+                        coffee.</li>
                     <li><strong>Stability:</strong> Use a beanbag or camera bag if you don't have a tripod.</li>
                 </ul>
             </div>
@@ -107,12 +124,14 @@
                 <div class="code-block" style="text-align: center; font-size: 1.1rem; color: var(--accent);">
                     500 ÷ Focal Length = Max Exposure (s)
                 </div>
-                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;">For APS-C sensors, use 300 instead of 500.</p>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;">For APS-C sensors, use
+                    300 instead of 500.</p>
             </div>
             <div class="card">
                 <h3>4. Post-Processing Workflow</h3>
                 <ul>
-                    <li><strong>White Balance:</strong> Lower Temperature (Kelvin) to ~3200K to neutralize orange light pollution.</li>
+                    <li><strong>White Balance:</strong> Lower Temperature (Kelvin) to ~3200K to neutralize orange light
+                        pollution.</li>
                     <li><strong>Curves:</strong> Use an "S-Curve" to boost contrast without clipping stars.</li>
                     <li><strong>Noise Reduction:</strong> Don't overdo it! Preserve the fine star details.</li>
                 </ul>
@@ -124,19 +143,23 @@
                 <h3>Acknowledgments & Resources</h3>
                 <div class="credits-grid">
                     <div class="credit-item">
-                        <a href="https://astrobackyard.com/astrophotography-image-processing-challenge/" target="_blank">Trevor Jones (AstroBackyard)</a>
+                        <a href="https://astrobackyard.com/astrophotography-image-processing-challenge/"
+                            target="_blank">Trevor Jones (AstroBackyard)</a>
                         <p>Deep-sky processing masterclass.</p>
                     </div>
                     <div class="credit-item">
-                        <a href="https://www.astropix.com/books/BGAIP/start.html" target="_blank">Jerry Lodriguss (Astropix)</a>
+                        <a href="https://www.astropix.com/books/BGAIP/start.html" target="_blank">Jerry Lodriguss
+                            (Astropix)</a>
                         <p>The science of SNR and calibration.</p>
                     </div>
                     <div class="credit-item">
-                        <a href="https://www.jacknicholsphoto.com/processing-a-single-shot-milky-way-photo" target="_blank">Jack Nichols</a>
+                        <a href="https://www.jacknicholsphoto.com/processing-a-single-shot-milky-way-photo"
+                            target="_blank">Jack Nichols</a>
                         <p>Milky Way single-shot workflows.</p>
                     </div>
                     <div class="credit-item">
-                        <a href="https://clarkvision.com/articles/astrophotography.image.processing/" target="_blank">Dr. Roger Clark (Clarkvision)</a>
+                        <a href="https://clarkvision.com/articles/astrophotography.image.processing/"
+                            target="_blank">Dr. Roger Clark (Clarkvision)</a>
                         <p>Physics of light pollution and natural star color.</p>
                     </div>
                 </div>
@@ -159,4 +182,5 @@
         updateTime();
     </script>
 </body>
+
 </html>
