@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diskarte Astro-Simulator | Professional Guide</title>
+    <meta name="description" content="An interactive astrophotography exposure simulator and minimalist cheat sheet for beginners. Learn the 500 Rule and exposure triangle.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <p>Masterclass Series</p>
+            <h1>Diskarte Astro-Simulator</h1>
+            <p>Interactive Exposure & Motion Simulation for Budget Astrophotography</p>
+        </header>
+
+        <section class="simulator-card">
+            <div class="viewfinder-container">
+                <canvas id="astroCanvas"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label class="control-label">Focal Length <span id="fl-val">12mm</span></label>
+                    <input type="range" id="fl" min="12" max="50" step="1" value="12">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Aperture <span id="ap-val">f/2.8</span></label>
+                    <input type="range" id="ap" min="1.4" max="8" step="0.1" value="2.8">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Shutter Speed <span id="ss-val">15s</span></label>
+                    <input type="range" id="ss" min="1" max="60" step="1" value="15">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">ISO <span id="iso-val">1600</span></label>
+                    <input type="range" id="iso" min="100" max="12800" step="100" value="1600">
+                </div>
+
+                <div class="status-badge">
+                    <div class="control-label">Max Shutter (500 Rule): <span id="limit-val" style="color: var(--text-primary);">41s</span></div>
+                    <div id="status-msg" style="font-weight: 600; margin-top: 0.5rem;">Excellent Exposure</div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">The "Diskarte" Cheat Sheet</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Pre-Flight Checklist</h3>
+                <ul>
+                    <li><strong>Moon Phase:</strong> Shoot only when illumination < 20% or after moonset.</li>
+                    <li><strong>Bortle Scale:</strong> Aim for Bortle 4 or lower for best Milky Way clarity.</li>
+                    <li><strong>The Dew Hack:</strong> Use a chemical hand warmer (kairo) to prevent lens fog.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>2. Hardware Hacks</h3>
+                <ul>
+                    <li><strong>Remote Shutter:</strong> Use wired earphone volume buttons to avoid screen touch.</li>
+                    <li><strong>Focusing:</strong> Zoom in 10x on a bright star in Live View; minimize the dot size.</li>
+                    <li><strong>Steady Base:</strong> If no tripod, use a beanbag or your camera bag on a flat rock.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>3. The 500 Rule Equation</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">To prevent star trails caused by Earth's rotation:</p>
+                <div class="code-block" style="text-align: center; font-size: 1.1rem; color: var(--accent);">
+                    500 ÷ Focal Length = Max Exposure (s)
+                </div>
+            </div>
+            <div class="card">
+                <h3>4. Post-Processing Tips</h3>
+                <ul>
+                    <li><strong>White Balance:</strong> Set to ~3200K (Tungsten) to kill city light orange.</li>
+                    <li><strong>Lightroom:</strong> Use HSL Orange Luminance to selectively dim light pollution.</li>
+                    <li><strong>Vibrance:</strong> Boost Vibrance over Saturation to protect natural star colors.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">Automation Scripts (Developer Corner)</h2>
+        <div class="grid" style="grid-template-columns: 1fr;">
+            <div class="card">
+                <h3>Auto-Clean: Star Trail Remover</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">A lightweight Python script to scan metadata and move photos that exceed your focal length's 500 Rule limit.</p>
+                <div class="code-block">
+# Quick snippet for folder cleanup
+import os, exifread
+
+def clean_trails(path, fl):
+    limit = 500 / fl
+    for file in os.listdir(path):
+        # Add logic to check EXIF ShutterSpeed and move if > limit
+        pass
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="credits">
+                <h3>Acknowledgments & Resources</h3>
+                <div class="credits-grid">
+                    <div class="credit-item">
+                        <a href="https://astrobackyard.com/astrophotography-image-processing-challenge/" target="_blank">Trevor Jones (AstroBackyard)</a>
+                        <p>Deep-sky processing masterclass.</p>
+                    </div>
+                    <div class="credit-item">
+                        <a href="https://www.astropix.com/books/BGAIP/start.html" target="_blank">Jerry Lodriguss (Astropix)</a>
+                        <p>The science of SNR and calibration.</p>
+                    </div>
+                    <div class="credit-item">
+                        <a href="https://www.jacknicholsphoto.com/processing-a-single-shot-milky-way-photo" target="_blank">Jack Nichols</a>
+                        <p>Milky Way single-shot workflows.</p>
+                    </div>
+                    <div class="credit-item">
+                        <a href="https://clarkvision.com/articles/astrophotography.image.processing/" target="_blank">Dr. Roger Clark (Clarkvision)</a>
+                        <p>Physics of natural star color.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="author-tag">
+                Created & Curated by <span>Raymund</span> for the Astro Masterclass 2026
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
