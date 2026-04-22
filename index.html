@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diskarte Astro-Simulator | Professional Guide</title>
-    <meta name="description" content="An interactive astrophotography exposure simulator and minimalist cheat sheet for beginners. Learn the 500 Rule and exposure triangle.">
+    <title>Diskarte Astro-Simulator | Raymond Borres</title>
+    <meta name="description" content="An interactive astrophotography exposure simulator and post-processing practice tool. Learn the 500 Rule and exposure triangle.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <div class="container">
         <header>
-            <p>Masterclass Series</p>
+            <p>Astrophotography Webinar — April 25, 2026</p>
             <h1>Diskarte Astro-Simulator</h1>
-            <p>Interactive Exposure & Motion Simulation for Budget Astrophotography</p>
+            <p>Interactive Exposure & Post-Processing Suite for Beginners</p>
         </header>
 
+        <h2 class="section-title">1. The Exposure Simulator</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Challenge: Find the "Excellent Exposure" status by balancing the sliders. Watch out for Earth's rotation!</p>
+        
         <section class="simulator-card">
             <div class="viewfinder-container">
                 <canvas id="astroCanvas"></canvas>
             </div>
             <div class="controls">
+                <div class="control-group">
+                    <label class="control-label">Sky Condition <span id="weather-val">Clear</span></label>
+                    <select id="weather" style="background: var(--bg); color: var(--text-primary); border: 1px solid var(--border); padding: 5px; border-radius: 4px;">
+                        <option value="clear">Clear Skies</option>
+                        <option value="hazy">Hazy / Light Pollution</option>
+                        <option value="cloudy">Partly Cloudy</option>
+                    </select>
+                </div>
                 <div class="control-group">
                     <label class="control-label">Focal Length <span id="fl-val">12mm</span></label>
                     <input type="range" id="fl" min="12" max="50" step="1" value="12">
@@ -30,71 +41,81 @@
                     <input type="range" id="ap" min="1.4" max="8" step="0.1" value="2.8">
                 </div>
                 <div class="control-group">
-                    <label class="control-label">Shutter Speed <span id="ss-val">15s</span></label>
-                    <input type="range" id="ss" min="1" max="60" step="1" value="15">
+                    <label class="control-label">Shutter Speed <span id="ss-val">1s</span></label>
+                    <input type="range" id="ss" min="1" max="60" step="1" value="1">
                 </div>
                 <div class="control-group">
-                    <label class="control-label">ISO <span id="iso-val">1600</span></label>
-                    <input type="range" id="iso" min="100" max="12800" step="100" value="1600">
+                    <label class="control-label">ISO <span id="iso-val">100</span></label>
+                    <input type="range" id="iso" min="100" max="12800" step="100" value="100">
                 </div>
 
                 <div class="status-badge">
                     <div class="control-label">Max Shutter (500 Rule): <span id="limit-val" style="color: var(--text-primary);">41s</span></div>
-                    <div id="status-msg" style="font-weight: 600; margin-top: 0.5rem;">Excellent Exposure</div>
+                    <div id="status-msg" style="font-weight: 600; margin-top: 0.5rem; color: var(--error);">Underexposed</div>
                 </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">2. Post-Processing Practice</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">Drag the sliders to edit this Milky Way shot. Practice balancing Exposure and Vibrance.</p>
+        
+        <section class="simulator-card" style="grid-template-columns: 1fr 300px;">
+            <div class="viewfinder-container" style="background: #111; overflow: hidden; min-height: 400px;">
+                <img id="practiceImg" src="practice-shot.jpg" alt="Practice Shot" style="max-width: 100%; height: auto; transition: filter 0.1s ease; border-radius: 8px;">
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label class="control-label">Exposure <span id="edit-exp-val">100%</span></label>
+                    <input type="range" id="edit-exp" min="0" max="200" value="100">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Contrast <span id="edit-con-val">100%</span></label>
+                    <input type="range" id="edit-con" min="50" max="200" value="100">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Temperature <span id="edit-temp-val">0</span></label>
+                    <input type="range" id="edit-temp" min="-50" max="50" value="0">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Vibrance <span id="edit-vib-val">100%</span></label>
+                    <input type="range" id="edit-vib" min="0" max="200" value="100">
+                </div>
+                <button id="resetEdit" style="background: var(--border); color: var(--text-primary); border: none; padding: 10px; border-radius: 6px; cursor: pointer; margin-top: 1rem; font-weight: 600;">Reset Image</button>
             </div>
         </section>
 
         <h2 class="section-title">The "Diskarte" Cheat Sheet</h2>
         <div class="grid">
             <div class="card">
-                <h3>1. Pre-Flight Checklist</h3>
+                <h3>1. Weather & Sky</h3>
                 <ul>
-                    <li><strong>Moon Phase:</strong> Shoot only when illumination < 20% or after moonset.</li>
-                    <li><strong>Bortle Scale:</strong> Aim for Bortle 4 or lower for best Milky Way clarity.</li>
-                    <li><strong>The Dew Hack:</strong> Use a chemical hand warmer (kairo) to prevent lens fog.</li>
+                    <li><strong>Cloud Cover:</strong> Check Clear Outside or Windy. Cloud cover is a big NO-NO.</li>
+                    <li><strong>Moon Phase:</strong> Shoot during New Moon or after moonset for maximum darkness.</li>
+                    <li><strong>Bortle Scale:</strong> Know your location. Bortle 1-3 is the dream; 4-5 is okay with filters.</li>
                 </ul>
             </div>
             <div class="card">
-                <h3>2. Hardware Hacks</h3>
+                <h3>2. Gear & Etiquette</h3>
                 <ul>
-                    <li><strong>Remote Shutter:</strong> Use wired earphone volume buttons to avoid screen touch.</li>
-                    <li><strong>Focusing:</strong> Zoom in 10x on a bright star in Live View; minimize the dot size.</li>
-                    <li><strong>Steady Base:</strong> If no tripod, use a beanbag or your camera bag on a flat rock.</li>
+                    <li><strong>Red Light Only:</strong> Use a red headlamp. White light ruins your night vision and "photobombs" long exposures.</li>
+                    <li><strong>Camping Gear:</strong> If you're going far, bring a power bank, warm clothes, and coffee.</li>
+                    <li><strong>Stability:</strong> Use a beanbag or camera bag if you don't have a tripod.</li>
                 </ul>
             </div>
             <div class="card">
-                <h3>3. The 500 Rule Equation</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">To prevent star trails caused by Earth's rotation:</p>
+                <h3>3. The 500 Rule</h3>
                 <div class="code-block" style="text-align: center; font-size: 1.1rem; color: var(--accent);">
                     500 ÷ Focal Length = Max Exposure (s)
                 </div>
+                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;">For APS-C sensors, use 300 instead of 500.</p>
             </div>
             <div class="card">
-                <h3>4. Post-Processing Tips</h3>
+                <h3>4. Post-Processing Workflow</h3>
                 <ul>
-                    <li><strong>White Balance:</strong> Set to ~3200K (Tungsten) to kill city light orange.</li>
-                    <li><strong>Lightroom:</strong> Use HSL Orange Luminance to selectively dim light pollution.</li>
-                    <li><strong>Vibrance:</strong> Boost Vibrance over Saturation to protect natural star colors.</li>
+                    <li><strong>White Balance:</strong> Lower Temperature (Kelvin) to ~3200K to neutralize orange light pollution.</li>
+                    <li><strong>Curves:</strong> Use an "S-Curve" to boost contrast without clipping stars.</li>
+                    <li><strong>Noise Reduction:</strong> Don't overdo it! Preserve the fine star details.</li>
                 </ul>
-            </div>
-        </div>
-
-        <h2 class="section-title">Automation Scripts (Developer Corner)</h2>
-        <div class="grid" style="grid-template-columns: 1fr;">
-            <div class="card">
-                <h3>Auto-Clean: Star Trail Remover</h3>
-                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">A lightweight Python script to scan metadata and move photos that exceed your focal length's 500 Rule limit.</p>
-                <div class="code-block">
-# Quick snippet for folder cleanup
-import os, exifread
-
-def clean_trails(path, fl):
-    limit = 500 / fl
-    for file in os.listdir(path):
-        # Add logic to check EXIF ShutterSpeed and move if > limit
-        pass
-                </div>
             </div>
         </div>
 
@@ -116,17 +137,26 @@ def clean_trails(path, fl):
                     </div>
                     <div class="credit-item">
                         <a href="https://clarkvision.com/articles/astrophotography.image.processing/" target="_blank">Dr. Roger Clark (Clarkvision)</a>
-                        <p>Physics of natural star color.</p>
+                        <p>Physics of light pollution and natural star color.</p>
                     </div>
                 </div>
             </div>
 
             <div class="author-tag">
-                Created & Curated by <span>Raymund</span> for the Astro Masterclass 2026
+                Created & Curated by <span>Raymond Borres</span> for the Astrophotography Webinar 2026
+                <br><small id="current-time"></small>
             </div>
         </footer>
     </div>
 
     <script src="app.js"></script>
+    <script>
+        // Update time dynamically
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').innerText = "Last Updated: " + now.toLocaleString();
+        }
+        updateTime();
+    </script>
 </body>
 </html>
