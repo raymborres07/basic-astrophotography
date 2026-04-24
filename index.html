@@ -74,8 +74,24 @@
                     <input type="range" id="edit-con" min="50" max="200" value="100">
                 </div>
                 <div class="control-group">
+                    <label class="control-label">Highlights <span id="edit-high-val">0</span></label>
+                    <input type="range" id="edit-high" min="-100" max="100" value="0">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Shadows <span id="edit-shad-val">0</span></label>
+                    <input type="range" id="edit-shad" min="-100" max="100" value="0">
+                </div>
+                <div class="control-group">
                     <label class="control-label">Temperature <span id="edit-temp-val">0</span></label>
                     <input type="range" id="edit-temp" min="-50" max="50" value="0">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Tint <span id="edit-tint-val">0</span></label>
+                    <input type="range" id="edit-tint" min="-50" max="50" value="0">
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Saturation <span id="edit-sat-val">100%</span></label>
+                    <input type="range" id="edit-sat" min="0" max="200" value="100">
                 </div>
                 <div class="control-group">
                     <label class="control-label">Vibrance <span id="edit-vib-val">100%</span></label>
@@ -219,6 +235,16 @@
         </footer>
     </div>
 
+    <svg style="position: absolute; width: 0; height: 0;" aria-hidden="true">
+        <filter id="advancedPhotoFilter">
+            <feComponentTransfer>
+                <feFuncR type="gamma" amplitude="1" exponent="1" offset="0" id="funcR" />
+                <feFuncG type="gamma" amplitude="1" exponent="1" offset="0" id="funcG" />
+                <feFuncB type="gamma" amplitude="1" exponent="1" offset="0" id="funcB" />
+            </feComponentTransfer>
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" id="tintMatrix" />
+        </filter>
+    </svg>
     <script src="app.js"></script>
     <script>
         function updateTime() {

@@ -186,15 +186,46 @@ function updateImageFilters() {
     const con = document.getElementById('edit-con').value;
     const temp = document.getElementById('edit-temp').value;
     const vib = document.getElementById('edit-vib').value;
+    const sat = document.getElementById('edit-sat').value;
+    const tint = document.getElementById('edit-tint').value;
+    const high = document.getElementById('edit-high').value;
+    const shad = document.getElementById('edit-shad').value;
 
     document.getElementById('edit-exp-val').innerText = exp + "%";
     document.getElementById('edit-con-val').innerText = con + "%";
     document.getElementById('edit-temp-val').innerText = temp > 0 ? "+" + temp : temp;
     document.getElementById('edit-vib-val').innerText = vib + "%";
+    document.getElementById('edit-sat-val').innerText = sat + "%";
+    document.getElementById('edit-tint-val').innerText = tint > 0 ? "+" + tint : tint;
+    document.getElementById('edit-high-val').innerText = high > 0 ? "+" + high : high;
+    document.getElementById('edit-shad-val').innerText = shad > 0 ? "+" + shad : shad;
+
+    // Apply SVG filter adjustments for Shadows/Highlights
+    // We use gamma exponent for shadows and amplitude for highlights (simplified)
+    const shadowGamma = 1 - (shad / 200); // shad up -> gamma down -> brightens shadows
+    const highlightAmp = 1 + (high / 200); // high up -> amplitude up -> brightens highlights
+
+    ['funcR', 'funcG', 'funcB'].forEach(id => {
+        const el = document.getElementById(id);
+        el.setAttribute('exponent', shadowGamma);
+        el.setAttribute('amplitude', highlightAmp);
+    });
+
+    // Apply Tint Matrix (Magenta vs Green)
+    const tintVal = tint / 100;
+    const tintMatrix = document.getElementById('tintMatrix');
+    // Simple matrix to boost G (Green) or boost R/B (Magenta)
+    tintMatrix.setAttribute('values', `
+        1 0 0 0 0
+        0 ${1 - tintVal} 0 0 0
+        0 0 1 0 0
+        0 0 0 1 0
+    `);
 
     // Apply CSS filters
     // brightness(exp%) contrast(con%) saturate(vib%) hue-rotate(temp deg)
-    practiceImg.style.filter = `brightness(${exp}%) contrast(${con}%) saturate(${vib}%) hue-rotate(${temp}deg)`;
+    // We combine CSS filters with our custom SVG filter
+    practiceImg.style.filter = `brightness(${exp}%) contrast(${con}%) saturate(${sat}%) hue-rotate(${temp}deg) url(#advancedPhotoFilter)`;
 }
 
 document.getElementById('resetEdit').addEventListener('click', () => {
@@ -202,6 +233,16 @@ document.getElementById('resetEdit').addEventListener('click', () => {
     document.getElementById('edit-con').value = 100;
     document.getElementById('edit-temp').value = 0;
     document.getElementById('edit-vib').value = 100;
+    document.getElementById('edit-sat').value = 100;
+    document.getElementById('edit-tint').value = 0;
+    document.getElementById('edit-high').value = 0;
+    document.getElementById('edit-shad').value = 0;
+    
+    // Update all slider tracks
+    document.querySelectorAll('.practice-card input[type="range"]').forEach(input => {
+        updateSliderTrack(input);
+    });
+    
     updateImageFilters();
 });
 
