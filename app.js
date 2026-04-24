@@ -32,6 +32,22 @@ function getRandomStarColor() {
 
 generateStars();
 
+const clouds = [];
+function generateClouds() {
+    clouds.length = 0;
+    for (let i = 0; i < 15; i++) {
+        clouds.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * (canvas.height * 0.8),
+            rx: 60 + Math.random() * 140,
+            ry: 30 + Math.random() * 60,
+            alpha: 0.6 + Math.random() * 0.3,
+            rotation: Math.random() * Math.PI
+        });
+    }
+}
+generateClouds();
+
 function draw() {
     const fl = parseFloat(document.getElementById('fl').value);
     const ap = parseFloat(document.getElementById('ap').value);
@@ -95,13 +111,18 @@ function draw() {
 
     // Draw Clouds for 'cloudy' weather
     if (weather === 'cloudy') {
-        ctx.globalAlpha = 0.4;
-        ctx.fillStyle = '#444';
-        for (let i = 0; i < 5; i++) {
+        clouds.forEach(cloud => {
+            ctx.globalAlpha = cloud.alpha;
+            ctx.fillStyle = 'rgba(50, 50, 60, 0.8)';
             ctx.beginPath();
-            ctx.ellipse(100 + i * 200, 100 + (i % 2) * 50, 150, 60, 0, 0, Math.PI * 2);
+            ctx.ellipse(cloud.x, cloud.y, cloud.rx, cloud.ry, cloud.rotation, 0, Math.PI * 2);
             ctx.fill();
-        }
+            
+            // Add a subtle highlight to cloud edges
+            ctx.strokeStyle = 'rgba(100, 100, 120, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        });
     }
 
     ctx.globalAlpha = 1.0;
@@ -133,8 +154,8 @@ function updateStatus(exposure, trail, iso, weather) {
     let color = "var(--success)";
 
     if (weather === 'cloudy') {
-        message = "Cloud Cover: Impossible to Shoot!";
-        color = "var(--error)";
+        message = "Partly Cloudy: Variable Visibility";
+        color = "var(--warning)";
     } else if (exposure < 0.5) {
         message = "Underexposed (Increase ISO or Shutter)";
         color = "var(--error)";
@@ -184,9 +205,19 @@ document.getElementById('resetEdit').addEventListener('click', () => {
     updateImageFilters();
 });
 
+function updateSliderTrack(input) {
+    const min = input.min || 0;
+    const max = input.max || 100;
+    const val = input.value;
+    const percent = (val - min) / (max - min) * 100;
+    input.style.background = `linear-gradient(90deg, var(--accent) 0%, var(--accent) ${percent}%, var(--border) ${percent}%, var(--border) 100%)`;
+}
+
 // Listeners
 document.querySelectorAll('input[type="range"], select').forEach(input => {
+    if (input.type === 'range') updateSliderTrack(input);
     input.addEventListener('input', () => {
+        if (input.type === 'range') updateSliderTrack(input);
         if (input.id.startsWith('edit')) {
             updateImageFilters();
         } else {
@@ -203,5 +234,6 @@ updateImageFilters();
 window.addEventListener('resize', () => {
     resizeCanvas();
     generateStars();
+    generateClouds();
     draw();
 });
