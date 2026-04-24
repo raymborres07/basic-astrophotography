@@ -211,21 +211,28 @@ function updateImageFilters() {
         el.setAttribute('amplitude', highlightAmp);
     });
 
-    // Apply Tint Matrix (Magenta vs Green)
-    const tintVal = tint / 100;
+    // Apply Tint & Temperature Matrix
+    const tintVal = parseFloat(tint) / 100;
+    const tempVal = parseFloat(temp) / 100;
     const tintMatrix = document.getElementById('tintMatrix');
-    // Simple matrix to boost G (Green) or boost R/B (Magenta)
+    
+    // Temperature: Boost R/G for warm, B for cool
+    // Tint: Boost R/B for magenta, G for green
+    const rMod = 1 + tempVal;
+    const gMod = 1 - tintVal;
+    const bMod = 1 - tempVal;
+
     tintMatrix.setAttribute('values', `
-        1 0 0 0 0
-        0 ${1 - tintVal} 0 0 0
-        0 0 1 0 0
+        ${rMod} 0 0 0 0
+        0 ${gMod} 0 0 0
+        0 0 ${bMod} 0 0
         0 0 0 1 0
     `);
 
     // Apply CSS filters
-    // brightness(exp%) contrast(con%) saturate(vib%) hue-rotate(temp deg)
-    // We combine CSS filters with our custom SVG filter
-    practiceImg.style.filter = `brightness(${exp}%) contrast(${con}%) saturate(${sat}%) hue-rotate(${temp}deg) url(#advancedPhotoFilter)`;
+    // We combine Saturation and Vibrance for the saturate() filter
+    const totalSat = (parseFloat(sat) * parseFloat(vib)) / 100;
+    practiceImg.style.filter = `brightness(${exp}%) contrast(${con}%) saturate(${totalSat}%) url(#advancedPhotoFilter)`;
 }
 
 document.getElementById('resetEdit').addEventListener('click', () => {
